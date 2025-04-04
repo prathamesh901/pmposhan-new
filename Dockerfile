@@ -1,18 +1,24 @@
-# Use an official Python runtime as a parent image
+# Use an official Python runtime as a base image
 FROM python:3.10
 
 # Set the working directory
 WORKDIR /app
 
-# Copy requirements.txt and install dependencies
+# Install system dependencies for OpenCV and OpenGL
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy the requirements file and install dependencies
 COPY requirement.txt ./
 RUN pip install --no-cache-dir -r requirement.txt
 
-# Copy the rest of the app files
+# Copy the rest of the application
 COPY . .
 
-# Expose port 5000
+# Expose the port your app runs on
 EXPOSE 5000
 
-# Start the Flask server
+# Start the application
 CMD ["python", "app.py"]
