@@ -3,7 +3,7 @@ from flask_cors import CORS
 from ultralytics import YOLO
 import cv2
 import numpy as np
-import os
+
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -70,7 +70,6 @@ def predict():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 10000))  # Render assigns PORT dynamically
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=10000, debug=True)
 
 
