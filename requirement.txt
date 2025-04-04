@@ -1,5 +1,6 @@
 flask
 flask-cors
 ultralytics
-opencv-python-headless
+opencv-python-headless  # Use this instead of opencv-python for server environments
 numpy
+gunicorn  # Production WSGI server (recommended for Render)
