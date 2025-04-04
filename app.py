@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})  # Enable CORS
 
 # Load YOLO model
-model = YOLO(r"C:\Users\HP\Desktop\pmposhan api\best.pt")  # Update path
+model = YOLO("best.pt")  # Update path
 
 # Define calories for each class
 calorie_dict = {
